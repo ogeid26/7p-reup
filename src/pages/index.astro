@@ -1,11 +1,12 @@
 ---
 import "@fontsource-variable/inter";
 import Compatibility from "~/components/compatibility.astro";
+import Contact from "~/components/contact.astro";
 import Features from "~/components/features.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import Intro from "~/components/intro.astro";
-import Showcase from "~/components/showcase.astro";
+import Showcase from "~/components/projects.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
 
@@ -27,7 +28,7 @@ const description =
     <meta name="description" content={description} />
 
     <!-- social media -->
-    <meta property="og:title" content="Astro" />
+    <meta property="og:title" content="Septimo Piso" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
@@ -44,18 +45,20 @@ const description =
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+        
+        // Force dark theme
+        document.documentElement.dataset.theme = "dark" 
       }
 
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (event) => {
-          if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
-              ? "dark"
-              : "light";
-          }
-        });
+      // window
+      //   .matchMedia("(prefers-color-scheme: dark)")
+      //   .addEventListener("change", (event) => {
+      //     if (!localStorage.getItem("theme")) {
+      //       document.documentElement.dataset.theme = event.matches
+      //         ? "dark"
+      //         : "light";
+      //     }
+      //   });
     </script>
   </head>
   <body
@@ -66,8 +69,9 @@ const description =
     <div class="space-y-24 px-8 py-32">
       <Intro />
       <Showcase />
-      <Features />
-      <Compatibility />
+      <Contact/>
+      <!-- <Features />
+      <Compatibility /> -->
     </div>
     <Footer />
   </body>
